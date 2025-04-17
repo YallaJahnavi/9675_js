@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Employee Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1 1 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            padding: 6px;
+            font-size: 14px;
+        }
+
+        #searchBtn {
+            margin-top: 22px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Search for an Employee</h2>
+
+    <div class="form-container">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName">
+        </div>
+        <div class="form-group">
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation">
+        </div>
+        <div class="form-group">
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" id="email">
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="text" id="age">
+        </div>
+    </div>
+
+    <button id="searchBtn" onclick="searchEmployee()">Search</button>
+
+    <p class="error-message" id="errorMsg"></p>
+
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Designation</th>
+                <th>Contact</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Search results go here -->
+        </tbody>
+    </table>
+
+    <script>
+        const employees = [
+            { id: 1, firstName: "John", lastName: "Doe", designation: "Manager", contact: "1234567890", email: "john@example.com", age: 30 },
+            { id: 2, firstName: "Jane", lastName: "Smith", designation: "Developer", contact: "9876543210", email: "jane@example.com", age: 25 },
+            { id: 3, firstName: "Alice", lastName: "Johnson", designation: "Tester", contact: "5555555555", email: "alice@example.com", age: 28 }
+        ];
+
+        function searchEmployee() {
+            const fName = document.getElementById("firstName").value.toLowerCase();
+            const lName = document.getElementById("lastName").value.toLowerCase();
+            const desig = document.getElementById("designation").value.toLowerCase();
+            const contact = document.getElementById("contact").value;
+            const email = document.getElementById("email").value.toLowerCase();
+            const ageInput = document.getElementById("age").value;
+
+            const errorMsg = document.getElementById("errorMsg");
+            const tableBody = document.getElementById("employeeTable").getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = "";
+            errorMsg.textContent = "";
+
+            // Check if age input is a valid number
+            if (ageInput && isNaN(ageInput)) {
+                errorMsg.textContent = "Please enter a valid numeric age.";
+                return;
+            }
+
+            const results = employees.filter(emp => {
+                return (!fName || emp.firstName.toLowerCase().includes(fName)) &&
+                       (!lName || emp.lastName.toLowerCase().includes(lName)) &&
+                       (!desig || emp.designation.toLowerCase().includes(desig)) &&
+                       (!contact || emp.contact.includes(contact)) &&
+                       (!email || emp.email.toLowerCase().includes(email)) &&
+                       (!ageInput || emp.age == ageInput);
+            });
+
+            if (results.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="6">No employee found</td></tr>`;
+                return;
+            }
+
+            results.forEach(emp => {
+                const row = tableBody.insertRow();
+                row.innerHTML = `<td>${emp.id}</td>
+                                 <td>${emp.firstName}</td>
+                                 <td>${emp.lastName}</td>
+                                 <td>${emp.designation}</td>
+                                 <td>${emp.contact}</td>
+                                 <td>${emp.email}</td>`;
+            });
+        }
+    </script>
+
+</body>
+</html>
