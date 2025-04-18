@@ -1,2 +1,22 @@
-17-04-2025 : employee table with fields, done functionality of searching with all the fields, also done a functinality of raising an exception if the age is entered in some 
-              other formats other than numerical format.
+17-04-2025 : 
+=> employee table with fields, done functionality of searching with all the fields, also done a functinality of raising an exception if the age is entered in some 
+other formats other than numerical format.
+=> Convert the string into number and then compare 
+
+
+18-04-2025 :
+=> table should follow only the recommended order
+=> how to read csv files from java sript file?
+=> modify the logic in such a way that even part of the test should be search and cases (uppercase and lowercase) also should be done
+=> implement the functions for all - "EmpID, firstName, Contact, lastName, email, age
+=> use java script to style the page without css
+=> validation on each field - 1st name, last name, designation only alphabets should be done
+   age should be validated only on number
+   EmpId must start with "tmf"
+   email must be having "gmail"
+   load of the page should display the actual value
+=> if the user haven't entered anything and clicked on "search" button, it should display an exception
+=> display the total no.of employees found for every search
+   if the search result is 0, return empty table just with headings and display "no results found" in the 1st row
+
+
