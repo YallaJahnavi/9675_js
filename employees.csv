@@ -1,4 +1,11 @@
 id,firstName,lastName,designation,contact,email,age
-TMF001,John,Doe,Manager,1234567890,john@example.com,35
-TMF002,Jane,Smith,Developer,9876543210,jane@example.com,28
-TMF003,Ravi,Kumar,Tester,8787878787,ravi@abc.com,30
+TMF001,John,Doe,Manager,1234567890,john@example.com,35  
+TMF002,Jane,Smith,Developer,9876543210,jane@example.com,28  
+TMF003,Ravi,Kumar,Tester,8787878787,ravi@abc.com,30  
+TMF004,Emily,Johnson,Designer,7654321098,emily@designs.com,28 
+TMF005,Amit,Sharma,Developer,9988776655,amit@xyz.com,32  
+TMF006,Sara,Lee,HR,8899001122,sara.hr@example.com,31  
+TMF007,David,Brown,Manager,9112233445,david.b@corp.com,40  
+TMF008,Nina,Patel,Analyst,7000123456,nina.patel@analytics.com,28 
+TMF009,Karthik,Reddy,Support,8123456789,karthik.r@helpdesk.com,27  
+TMF010,Linda,Green,Consultant,6001237890,linda.green@consults.com,34
